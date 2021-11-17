@@ -42,8 +42,8 @@ var MarkerCluster = function (map, markerClusterOptions, _exec) {
   Object.defineProperty(self, '_clusters', {
     enumerable: false,
     value: {},
-    writable: false,
-    get() { return self._clusters; },
+    writable: false
+    //get() { return self._clusters; },
   });
   Object.defineProperty(self, 'debug', {
     value: markerClusterOptions.debug === true,
