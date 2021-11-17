@@ -42,7 +42,8 @@ var MarkerCluster = function (map, markerClusterOptions, _exec) {
   Object.defineProperty(self, '_clusters', {
     enumerable: false,
     value: {},
-    writable: false
+    writable: false,
+    get() { return self._clusters; },
   });
   Object.defineProperty(self, 'debug', {
     value: markerClusterOptions.debug === true,
@@ -443,6 +444,11 @@ MarkerCluster.prototype.getMarkerById = function (markerId) {
     return null;
   }
   return self._markerMap[markerId];
+};
+
+// add by onozuka
+MarkerCluster.prototype.getClusters = function () {
+  return this._clusters;
 };
 
 Object.defineProperty(MarkerCluster.prototype, '_getClusterByClusterId', {
