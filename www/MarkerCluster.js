@@ -15,6 +15,8 @@ var utils = require('cordova/utils'),
  * MarkerCluster Class
  *****************************************************************************/
 var exec;
+const clusters = {};
+
 var MarkerCluster = function (map, markerClusterOptions, _exec) {
   exec = _exec;
   Overlay.call(this, map, markerClusterOptions, 'MarkerCluster', _exec);
@@ -40,10 +42,10 @@ var MarkerCluster = function (map, markerClusterOptions, _exec) {
     writable: false
   });
   Object.defineProperty(self, '_clusters', {
-    enumerable: false,
-    value: {},
-    writable: false
-    //get() { return self._clusters; },
+    enumerable: true,
+    value: clusters,
+    writable: false,
+    get: function(){return clusters;}
   });
   Object.defineProperty(self, 'debug', {
     value: markerClusterOptions.debug === true,
